@@ -1,4 +1,4 @@
 #!/bin/bash
-
-echo "Content-type: text/html"
-echo "Hello world!"
+echo "content-type: text/plain"
+echo
+echo "Hellow World"
