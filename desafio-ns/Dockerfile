@@ -12,8 +12,8 @@ RUN  apt-get update && apt-get install fcgiwrap -y && \
      dos2unix /usr/lib/cgi-bin/teste.cgi && \
      dos2unix /comandos.sh && \
      chmod +x comandos.sh
-
-ENV KUBECONFIG=/kubeconfig/teste-desafio.yaml
+     
+ENV KUBECONFIG=/kubeconfig/local.yaml
 EXPOSE 80
 
 ENTRYPOINT ["/bin/bash", "./comandos.sh"]

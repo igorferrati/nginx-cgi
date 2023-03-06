@@ -10,7 +10,6 @@ echo "<head> <meta http-equiv="refresh" content="20">"
 echo "</head>"
 echo "<body>"
     echo "<h2> Desafio 1 - CGI </h2>"
-    export KUBECONFIG=kubeconfig/teste-desafio.yaml
-    kubectl  get ns
+    echo "<pre>$(kubectl get ns) </pre>"
 echo "</body>"
 echo "</html>"
