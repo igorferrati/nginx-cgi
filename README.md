@@ -3,7 +3,6 @@
 * Desafio consiste em criar um servidor cgi que conecta e mostra informações dinâmicas de um cluster;
 * As keys de acesso a cluster estão no build da imagem, o exercício foi testado para um cluster em específico.
 
--
 
 ## desafio-ns
 
@@ -11,7 +10,6 @@
 * Configurações cgi;
 * Conexão com cluster específico para teste do desafio proposto.
 
--
 
 ## nginx-helloworld
 
