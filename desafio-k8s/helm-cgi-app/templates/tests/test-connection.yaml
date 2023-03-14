@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "cgi-app.fullname" . }}-test-connection"
+  labels:
+    {{- include "cgi-app.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "cgi-app.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
