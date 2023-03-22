@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: igorferrati/desafio1
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "1.0"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -51,6 +51,68 @@ readinessProbe:
     path: /
     port: http
 
+configMap:
+  path: /home/project/kubeconfig
+  data:
+    estudo.yaml: |-
+      apiVersion: v1
+      kind: Config
+      clusters:
+      - name: "estudo"
+        cluster:
+          server: "https://35.193.202.119/k8s/clusters/c-7k9jb"
+          certificate-authority-data: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJ2RENDQ\
+            VdPZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQkdNUnd3R2dZRFZRUUtFeE5rZVc1aGJXbGoKY\
+            kdsemRHVnVaWEl0YjNKbk1TWXdKQVlEVlFRRERCMWtlVzVoYldsamJHbHpkR1Z1WlhJdFkyRkFNV\
+            FkzT1RNeQpNekF4TmpBZUZ3MHlNekF6TWpBeE5ETTJOVFphRncwek16QXpNVGN4TkRNMk5UWmFNR\
+            Vl4SERBYUJnTlZCQW9UCkUyUjVibUZ0YVdOc2FYTjBaVzVsY2kxdmNtY3hKakFrQmdOVkJBTU1IV\
+            1I1Ym1GdGFXTnNhWE4wWlc1bGNpMWoKWVVBeE5qYzVNekl6TURFMk1Ga3dFd1lIS29aSXpqMENBU\
+            VlJS29aSXpqMERBUWNEUWdBRUJTM0RHVWNHWnl5eApCajRsSjZ1Mnp4Y1BSV25YN1N2bHVxeS9lQ\
+            0lLWHE1TnNRdURndGVnWFNqamgrbDl3SThORTVsaGduL3l2ZmdKCkc4QnNiV25TdTZOQ01FQXdEZ\
+            1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0hRWUQKVlIwT0JCWUVGQ\
+            mc0Tm81SUFlTDFZMWd1dno3cFh2c2JvbUdZTUFvR0NDcUdTTTQ5QkFNQ0EwY0FNRVFDSUhMcApKb\
+            UQ3UUNwZ0UwUVRDWmVmRmRJVHJrVEdZL2hVWHQrZjRvb3VnbUNBQWlBWmo5TTZOU3l2QzYvU3Nte\
+            ERQSWVWCm4vYjhzdEtCTGtKZW5uRVBEbkxDdlE9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0t"
+      - name: "estudo-etcd-cp"
+        cluster:
+          server: "https://34.70.90.160:6443"
+          certificate-authority-data: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM0VENDQ\
+            WNtZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFTTVJBd0RnWURWUVFERXdkcmRXSmwKT\
+            FdOaE1CNFhEVEl6TURNeU1URTJNekF6T0ZvWERUTXpNRE14T0RFMk16QXpPRm93RWpFUU1BNEdBM\
+            VVFQXhNSAphM1ZpWlMxallUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ\
+            0VCQU5pZ1NZVC80dVBpCkNmelRpWEpGdFJQOUpwK1dpWVJsMWtQcVQ4MDBOVnJISDJWUlhUcDZXM\
+            ytxcFhweUxKbld1SW1uTzBLRjFLSUgKbzZRT2ZtZ3NFY0VOZ3R5eWpiRzRHSGMwekFVWktjMTVSN\
+            HZtTjJoWmV2cWtxU3F0NFZISEVQb2VhdjZBK3E0VQpoZmRtNmtYR1JmNVZDOEZzQnEzbjVwN3lqa\
+            ElFekNKQVhFVlZpVDFpZmdiRGRQd2RKOXE5OVpQc2RzSjlpdmdiClhNZFZ5OWNsVG81RDRaOE9kM\
+            i9QTm94dzhHUFlLRlZ5a0p6NmdaVDkrb0pjTE40Wjl1bGZma3pRcktwczRhejMKb2ZFdjViekExe\
+            DJYZENheXFlR2xhclc5eEZuVnJJNDZTNFNneUt1S2ppY1NJVk1ORGtQSnJQckZRV2dzZXZ1Kwo1d\
+            HF6Y01OY1hYMENBd0VBQWFOQ01FQXdEZ1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93U\
+            UZNQU1CCkFmOHdIUVlEVlIwT0JCWUVGSDRIcll2Y1FaeTMvaDQzMk12YmJBUmtMQmVmTUEwR0NTc\
+            UdTSWIzRFFFQkN3VUEKQTRJQkFRQTZyeXpFckI0YWt5V1pKQVl4MHRScVpjcEtUZWFWR1lNYTBqd\
+            0xTbHFQSnozbS9OM1AvMHdtcTBHagpxbE1HOUhqTEtzUmI5M3J4dlFNYkJWb1ZHN0g3YWRpaU1Rd\
+            2VNalF1VUNHMWhSYkxxcTZOMk1aRjFoRG5GRXRrCjVJWEgzTWpLaXY1M1JDOC9oWnhaMkQ3WndLa\
+            2IwR1dOV3FZWjQrbVN1eWxpeEVONmFiZGN4cmdqQWxGaXhTMHgKN3Z1cDRxSlNoV0h5dWRoSnYzQ\
+            nBjVE5kVXV6RnRoejJvNmZuRXc3c0VWWHFzamlzMjZtMDV4MEE3VU9FVmwzVApiZjBTU0llWTRTR\
+            kJSNWJOSGo4ZlBQM2M4aFBCdS96Qnh6LzJXUkJFRTltOU9DVXQ4Q0lBZi9rZ1h2Mi9wOWVpCnVpZ\
+            XB2c3hvdEFaU1owUFRtdDR5dUp3ZGJKT04KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo="
+
+      users:
+      - name: "estudo"
+        user:
+          token: "kubeconfig-user-2jrln7vz5z:277q7qc8bg5hxpzz4tr7kcqbmvnsd42xz9shfrn7fmwxnpkd6v9blw"
+
+
+      contexts:
+      - name: "estudo"
+        context:
+          user: "estudo"
+          cluster: "estudo"
+      - name: "estudo-etcd-cp"
+        context:
+          user: "estudo"
+          cluster: "estudo-etcd-cp"
+
+      current-context: "estudo"
 
 ingress:
   enabled: true
@@ -59,7 +121,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: 192.168.0.251
+    - host: igorestudo.ddns.net
       paths:
         - path: /
           pathType: ImplementationSpecific
