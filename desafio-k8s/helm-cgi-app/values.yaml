@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: igorferrati/desafio1
+  repository: igorferrati/desafiok8s
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "1.0"
@@ -53,14 +53,15 @@ readinessProbe:
 
 configMap:
   path: /home/project/kubeconfig
+  pathKubeconfig: /home/project/kubeconfig/estudo-2.yaml
   data:
-    estudo.yaml: |-
+    estudo-2.yaml: |-
       apiVersion: v1
       kind: Config
       clusters:
-      - name: "estudo"
+      - name: "estudo-2"
         cluster:
-          server: "https://35.193.202.119/k8s/clusters/c-7k9jb"
+          server: "https://35.193.202.119/k8s/clusters/c-ts4d4"
           certificate-authority-data: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJ2RENDQ\
             VdPZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQkdNUnd3R2dZRFZRUUtFeE5rZVc1aGJXbGoKY\
             kdsemRHVnVaWEl0YjNKbk1TWXdKQVlEVlFRRERCMWtlVzVoYldsamJHbHpkR1Z1WlhJdFkyRkFNV\
@@ -73,46 +74,47 @@ configMap:
             mc0Tm81SUFlTDFZMWd1dno3cFh2c2JvbUdZTUFvR0NDcUdTTTQ5QkFNQ0EwY0FNRVFDSUhMcApKb\
             UQ3UUNwZ0UwUVRDWmVmRmRJVHJrVEdZL2hVWHQrZjRvb3VnbUNBQWlBWmo5TTZOU3l2QzYvU3Nte\
             ERQSWVWCm4vYjhzdEtCTGtKZW5uRVBEbkxDdlE9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0t"
-      - name: "estudo-etcd-cp"
+      - name: "estudo-2-etcd-control"
         cluster:
-          server: "https://34.70.90.160:6443"
+          server: "https://104.198.38.189:6443"
           certificate-authority-data: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM0VENDQ\
             WNtZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFTTVJBd0RnWURWUVFERXdkcmRXSmwKT\
-            FdOaE1CNFhEVEl6TURNeU1URTJNekF6T0ZvWERUTXpNRE14T0RFMk16QXpPRm93RWpFUU1BNEdBM\
+            FdOaE1CNFhEVEl6TURNeU16RTNNak13TkZvWERUTXpNRE15TURFM01qTXdORm93RWpFUU1BNEdBM\
             VVFQXhNSAphM1ZpWlMxallUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ\
-            0VCQU5pZ1NZVC80dVBpCkNmelRpWEpGdFJQOUpwK1dpWVJsMWtQcVQ4MDBOVnJISDJWUlhUcDZXM\
-            ytxcFhweUxKbld1SW1uTzBLRjFLSUgKbzZRT2ZtZ3NFY0VOZ3R5eWpiRzRHSGMwekFVWktjMTVSN\
-            HZtTjJoWmV2cWtxU3F0NFZISEVQb2VhdjZBK3E0VQpoZmRtNmtYR1JmNVZDOEZzQnEzbjVwN3lqa\
-            ElFekNKQVhFVlZpVDFpZmdiRGRQd2RKOXE5OVpQc2RzSjlpdmdiClhNZFZ5OWNsVG81RDRaOE9kM\
-            i9QTm94dzhHUFlLRlZ5a0p6NmdaVDkrb0pjTE40Wjl1bGZma3pRcktwczRhejMKb2ZFdjViekExe\
-            DJYZENheXFlR2xhclc5eEZuVnJJNDZTNFNneUt1S2ppY1NJVk1ORGtQSnJQckZRV2dzZXZ1Kwo1d\
-            HF6Y01OY1hYMENBd0VBQWFOQ01FQXdEZ1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93U\
-            UZNQU1CCkFmOHdIUVlEVlIwT0JCWUVGSDRIcll2Y1FaeTMvaDQzMk12YmJBUmtMQmVmTUEwR0NTc\
-            UdTSWIzRFFFQkN3VUEKQTRJQkFRQTZyeXpFckI0YWt5V1pKQVl4MHRScVpjcEtUZWFWR1lNYTBqd\
-            0xTbHFQSnozbS9OM1AvMHdtcTBHagpxbE1HOUhqTEtzUmI5M3J4dlFNYkJWb1ZHN0g3YWRpaU1Rd\
-            2VNalF1VUNHMWhSYkxxcTZOMk1aRjFoRG5GRXRrCjVJWEgzTWpLaXY1M1JDOC9oWnhaMkQ3WndLa\
-            2IwR1dOV3FZWjQrbVN1eWxpeEVONmFiZGN4cmdqQWxGaXhTMHgKN3Z1cDRxSlNoV0h5dWRoSnYzQ\
-            nBjVE5kVXV6RnRoejJvNmZuRXc3c0VWWHFzamlzMjZtMDV4MEE3VU9FVmwzVApiZjBTU0llWTRTR\
-            kJSNWJOSGo4ZlBQM2M4aFBCdS96Qnh6LzJXUkJFRTltOU9DVXQ4Q0lBZi9rZ1h2Mi9wOWVpCnVpZ\
-            XB2c3hvdEFaU1owUFRtdDR5dUp3ZGJKT04KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo="
+            0VCQUxDVTBLMmQ0YTBDCjVvWGJHTkJVL2lmRkFhVDdxeVV6S2drR0krVEtPQmFmeG1BVnM4bHVwM\
+            jMzMDE0ZmtFZVpLdUJSb25GdFVHQ1gKZS9LYktEYjRpUUh1YXpadGtHSlhuTWY1Y1pPSWdOaWZVK\
+            2ZrQTIvNWM5ZHRmMlJudlhWQVpCNkppZkJQYUFRSwpLSlQvSWV6RkRZVy9tYWwwMTZoYmxVQ2E3O\
+            GNvWXdRR3pPTXBlbStIMlIwWGxuVHozdVVHRDl0dmVlcUltZDY5Cnc4aWpxVGtvSWw1dWpPUms3M\
+            2Q3Uk5GZE5ESXNnRWxaVHlvbURNNzJnWC9nbDNkMFdCaDN0VnVSOEsrRjVaVCsKYUhYVEYwL3drV\
+            0V6emNDSXJucWtDbGdMM29oMlpkS0FxVllUeS9zVFN4OGdqeTdiNlNKa1kycXRkeDJHVDI2RQovV\
+            GNkVWpWYXB0TUNBd0VBQWFOQ01FQXdEZ1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93U\
+            UZNQU1CCkFmOHdIUVlEVlIwT0JCWUVGRmlBZlNCamNpVy9Xa2pIOWlYVVA2MmJJMTB5TUEwR0NTc\
+            UdTSWIzRFFFQkN3VUEKQTRJQkFRQktrdE1qb3JnemJYdDBuSlpVTnhlMnZUVzhJc3c1WE1BNTNMe\
+            UpILytCY1FFNU95SzFteHpQYi9GNgpIcndJajBzVmxyNWpualZCMHU2TVZaLzN4YTF6SXdJdUNOb\
+            EVaYzhiZmU3YkR0cTZRSXZoZm5qRkxYdXFZVmY5CmhPVkdzdlpVckNLTXhNVll6akUydWNxL0N5Y\
+            Wk1SHhQa2hBN0I4ZFdxV1pBeHNDY1JJTFhaMHFsU1pWNnhBU1gKLzhFZk0yWHFWUjNlVVEvR0lYd\
+            FF0cjVXZTZxSFRVV1c1NG9lUW9hTXFIS2JjMHJjWDV6RWcyZWs2K2tqY2oydApYVHR5STluaWpKS\
+            HRJSnlya0NTLzJuZTlBdFBXMDFpSnM2cXQxM1ZZb0FrT2dXTFlyUUJKKzJaa2s1QkNzQmtHCjFwN\
+            nlGczFhVkVlaHhIK1ZRcmJpZkRhY09ZVkQKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo="
 
       users:
-      - name: "estudo"
+      - name: "estudo-2"
         user:
-          token: "kubeconfig-user-2jrln7vz5z:277q7qc8bg5hxpzz4tr7kcqbmvnsd42xz9shfrn7fmwxnpkd6v9blw"
+          token: "kubeconfig-user-2jrlnfvcxd:xprkgxtfrgrkf6jp99tfwrcmnwxcxtzf8s6bnpkchjt9nq2pfls7md"
 
 
       contexts:
-      - name: "estudo"
+      - name: "estudo-2"
         context:
-          user: "estudo"
-          cluster: "estudo"
-      - name: "estudo-etcd-cp"
+          user: "estudo-2"
+          cluster: "estudo-2"
+      - name: "estudo-2-etcd-control"
         context:
-          user: "estudo"
-          cluster: "estudo-etcd-cp"
+          user: "estudo-2"
+          cluster: "estudo-2-etcd-control"
 
-      current-context: "estudo"
+      current-context: "estudo-2"
+
 
 ingress:
   enabled: true
