@@ -15,3 +15,9 @@
 
 * Primeiro passo para estudo de cgi;
 * Confinguração fastcgi na imagem nginx
+
+## desafio-k8s
+
+* Melhorias na imagem
+* Aplicando em kubernetes
+* Utilização de helm para deploy
