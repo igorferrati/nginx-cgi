@@ -1,3 +1,7 @@
+* :file_folder: desafio-k8s - helm
+* :file_folder: desafio-ns - image cgi e scripts
+* :file_folder: nginx-helloworld - image cgi "Hello World"
+
 # NGINX Common Gateway Interface
 
 * Consiste na criação de um servidor nginx cgi para mostrar informações dinâmicas de um cluster.
