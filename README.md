@@ -1,23 +1,34 @@
-# Desafio 01 - NGINX CGI
+# NGINX Common Gateway Interface
 
-* Desafio consiste em criar um servidor cgi que conecta e mostra informações dinâmicas de um cluster;
-* As keys de acesso a cluster estão no build da imagem, o exercício foi testado para um cluster em específico.
+* Consiste na criação de um servidor nginx cgi para mostrar informações dinâmicas de um cluster.
 
-
-## desafio-ns
+## Docker Image
+### Passo 1
 
 * Criação de todas depêndencias em ambiente conteineinerizado;
-* Configurações cgi;
-* Conexão com cluster específico para teste do desafio proposto.
+* Configurações da imagem nginx para cgi;
+* Conexão com cluster.
 
+## Helloword
+### Passo 2
 
-## nginx-helloworld
+* Confinguração fastcgi na imagem nginx;
+* Criação do arquivo teste.cgi;
+* Através de script apresentar "hello world" em ```localhost/cgi-bin/teste.cgi```.
 
-* Primeiro passo para estudo de cgi;
-* Confinguração fastcgi na imagem nginx
+---
 
-## desafio-k8s
+# Aplicando em Kubernetes
 
-* Melhorias na imagem
-* Aplicando em kubernetes
-* Utilização de helm para deploy
+* Estudo para utilizar a imagem em kubernetes.
+
+### Passo 1 
+
+* Otimização da imagem;
+* Criação de Cluster;
+* Utilização helm;
+
+### Passo 2
+
+* Criação de RBAC;
+* Instalação via Helm.
