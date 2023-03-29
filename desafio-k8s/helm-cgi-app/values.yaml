@@ -23,13 +23,23 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: get-app-desafio
 
-# role:
-#   name:
-#   rules:
-#   - apiGroups: [""] #v1
-#     resources: ["namespaces"]
-#     verbs: ["get"]
+clusterrole:
+  name: get-namespaces
+  rules:
+  - apiGroups: [""]
+    resources: ["namespaces"]
+    verbs: ["get", "list"]
 
+clusterrolebind:
+  name: sa-get-ns
+  subjects:
+  - kind: ServiceAccount
+    name: get-app-desafio                         #name sa
+    namespace: app-teste
+  roleRef:
+    kind: ClusterRole
+    name: get-namespaces                          #name role
+    apiGroup: rbac.authorization.k8s.io
 
 podAnnotations: {}
 

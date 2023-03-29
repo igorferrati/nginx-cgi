@@ -1,8 +1,8 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-    name: get-namespaces
+    name: {{ .Values.clusterrole.name }}
+{{- with .Values.clusterrole.rules }}
 rules:
-- apiGroups: [""] #v1
-  resources: ["namespaces", "pods", "services"]
-  verbs: ["get","watch","list"]
+  {{- toYaml . | nindent 4 }}
+{{- end }}

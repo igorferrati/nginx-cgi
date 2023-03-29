@@ -1,12 +1,12 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: sa-get-ns
+  name: {{ .Values.clusterrolebind.name }}
+{{- with .Values.clusterrulebind.subjects }}
 subjects:
-- kind: ServiceAccount
-  name: get-app-desafio                         #name sa
-  namespace: app-teste
+  {{- toYaml . | nindent 4 }}
+{{- end }}
+{{- with .Values.clusterrolebind.roleRef }}
 roleRef:
-  kind: ClusterRole
-  name: get-namespaces                          #name role
-  apiGroup: rbac.authorization.k8s.io
+  {{- toYaml . | nindent 4 }}
+{{- end }}
