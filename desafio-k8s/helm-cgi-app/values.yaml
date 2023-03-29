@@ -35,7 +35,7 @@ clusterrolebind:
   subjects:
   - kind: ServiceAccount
     name: get-app-desafio                         #name sa
-    namespace: app-teste
+    namespace: app-desafio
   roleRef:
     kind: ClusterRole
     name: get-namespaces                          #name role
